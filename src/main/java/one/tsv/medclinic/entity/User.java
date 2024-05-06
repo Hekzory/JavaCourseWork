@@ -1,12 +1,17 @@
 package one.tsv.medclinic.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Collection;
+import java.util.List;
 
 @Entity
-@Table(name="user_account")
+@Table(name = "user_account")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -29,10 +34,17 @@ public class User {
 
     @ManyToMany
     @JoinTable(
-        name = "users_roles",
-        joinColumns = @JoinColumn(
-          name = "user_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn(
-          name = "role_id", referencedColumnName = "id"))
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @NotNull
+    private MedicalCard medicalCard = new MedicalCard();
+
+    @OneToMany(mappedBy = "user")
+    private List<Appointment> appointmentList;
 }

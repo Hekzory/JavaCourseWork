@@ -43,6 +43,8 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         user.setEmail(accountDto.getEmail());
         user.setRoles(Collections.singletonList(roleRepository.findById("ROLE_USER").get()));
+        user.getMedicalCard().setUser(user);
+
         return userRepository.save(user);
     }
 }
