@@ -26,14 +26,15 @@ public class SecurityConfig {
                 .csrf(withDefaults())
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests((request) -> request
-                        .requestMatchers("/", "/home", "/register", "/login", "/logout").permitAll()
+                        .requestMatchers("/", "/home").permitAll()
+                        .requestMatchers("/register", "/login").permitAll()
                         .requestMatchers("/app").hasRole("USER")
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
-                        .successForwardUrl("/app")
+                        .defaultSuccessUrl("/app")
                         .failureUrl("/login?error")
                         .permitAll()
                 )
@@ -53,11 +54,11 @@ public class SecurityConfig {
     }
 
     @Bean
-	DaoAuthenticationProvider authenticationProvider() {
-		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-		daoAuthenticationProvider.setUserDetailsService(appUserDetailsService);
-		return daoAuthenticationProvider;
-	}
+    DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+        daoAuthenticationProvider.setUserDetailsService(appUserDetailsService);
+        return daoAuthenticationProvider;
+    }
 
 }

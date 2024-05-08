@@ -1,24 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-	<head>
-		<title>Вход</title>
-	</head>
-	<body>
-		<h1>Пожалуйста, войдите</h1>
-		<div th:if="${param.error}">
-			Некорректный логин и пароль.</div>
-		<div th:if="${param.register}">
-			Успешная регистрация! Теперь необходимо войти.</div>
-		<div th:if="${param.logout}">
-			Вы вышли из аккаунта.</div>
-		<form th:action="@{/login}" method="post">
-			<div>
-			<input type="text" name="username" placeholder="Username"/>
-			</div>
-			<div>
-			<input type="password" name="password" placeholder="Password"/>
-			</div>
-			<input type="submit" value="Войти" />
-		</form>
-	</body>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/defaultHeadContent">
+</head>
+<body class="w-screen h-screen">
+<div>
+	<div th:replace="fragments/defaultNavBar"></div>
+	<div th:replace="fragments/loginCard"></div>
+	<script th:replace="fragments/defaultBottomScript"></script>
+</div>
+</body>
 </html>

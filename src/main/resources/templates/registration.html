@@ -1,28 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-	<head>
-		<title>Регистрация</title>
-	</head>
-	<body>
-		<h1>Пожалуйста, зарегистрируйтесь</h1>
-		<div th:if="${param.error}">
-			Ошибка: <th:block th:text="${param.error.getFirst()}"></th:block></div>
-		<div th:if="${param.logout}">
-			Вы вышли из аккаунта.</div>
-		<form th:action="@{/register}" method="post">
-			<div>
-			<input type="text" name="username" placeholder="Username"/>
-			</div>
-			<div>
-			<input type="text" name="email" placeholder="Email"/>
-			</div>
-			<div>
-			<input type="password" name="password" placeholder="Password"/>
-			</div>
-			<div>
-			<input type="password" name="matchingPassword" placeholder="Confirm password"/>
-			</div>
-			<input type="submit" value="Войти" />
-		</form>
-	</body>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/defaultHeadContent">
+</head>
+<body class="w-screen h-screen">
+<div>
+	<div th:replace="fragments/defaultNavBar"></div>
+	<div th:replace="fragments/registerCard"></div>
+	<script th:replace="fragments/defaultBottomScript"></script>
+</div>
+</body>
 </html>
