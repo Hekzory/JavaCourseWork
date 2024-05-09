@@ -24,6 +24,13 @@ pmd {
     toolVersion = "7.0.0"
 }
 
+dependencyManagement {
+    dependencies {
+        dependency("org.xmlunit:xmlunit-core:2.10.0")
+        dependency("org.apache.commons:commons-compress:1.26.0")
+    }
+}
+
 configurations {
     compileOnly {
         extendsFrom(configurations.annotationProcessor.get())
