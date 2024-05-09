@@ -5,6 +5,7 @@ plugins {
     id("pmd")
     id("org.springframework.boot") version "3.3.0-RC1"
     id("io.spring.dependency-management") version "1.1.5"
+    id("com.github.ben-manes.versions") version "0.51.0"
 }
 
 group = "one.tsv"
@@ -27,7 +28,7 @@ pmd {
 dependencyManagement {
     dependencies {
         dependency("org.xmlunit:xmlunit-core:2.10.0")
-        dependency("org.apache.commons:commons-compress:1.26.0")
+        dependency("org.apache.commons:commons-compress:1.26.1")
     }
 }
 
