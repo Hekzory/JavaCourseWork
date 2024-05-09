@@ -27,7 +27,7 @@ pmd {
 dependencyManagement {
     dependencies {
         dependency("org.xmlunit:xmlunit-core:2.10.0")
-        dependency("org.apache.commons:commons-compress:1.26.0")
+        dependency("org.apache.commons:commons-compress:1.26.1")
     }
 }
 
