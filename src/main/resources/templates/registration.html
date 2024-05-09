@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/defaultHeadContent">
+<head th:insert="~{fragments/defaultHeadContent.html}">
 </head>
 <body class="w-screen h-screen">
 <div>
-	<div th:replace="fragments/defaultNavBar"></div>
-	<div th:replace="fragments/registerCard"></div>
-	<script th:replace="fragments/defaultBottomScript"></script>
+	<div th:replace="~{fragments/defaultNavBar}"></div>
+	<div th:replace="~{fragments/auth/registerCard}"></div>
+	<script th:replace="~{fragments/defaultBottomScript}"></script>
 </div>
 </body>
 </html>

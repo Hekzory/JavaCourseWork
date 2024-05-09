@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/defaultHeadContent">
+<head th:insert="~{fragments/defaultHeadContent}">
 </head>
 <body class="w-screen h-screen">
 <div>
-    <div th:replace="fragments/defaultNavBar"></div>
+    <div th:replace="~{fragments/defaultNavBar}"></div>
     <div class="w-full bg-gradient-to-b pt-20 pr-4 pb-20 pl-4 from-gray-100 to-white">
       <div class="bg-white pt-8 pr-4 pb-8 pl-4 md:px-24 lg:px-8 lg:py-10">
         <div class="mr-auto ml-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
@@ -37,6 +37,6 @@
       </div>
     </div>
 </div>
-<script th:replace="fragments/defaultBottomScript"></script>
+<script th:replace="~{fragments/defaultBottomScript}"></script>
 </body>
 </html>

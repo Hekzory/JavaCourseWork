@@ -20,7 +20,7 @@ public class HomeController {
 
     @GetMapping("/app")
     public String app() {
-        return "index";
+        return "main-dashboard";
     }
 
     @GetMapping("/admin")

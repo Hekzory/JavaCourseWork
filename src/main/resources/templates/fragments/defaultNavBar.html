@@ -8,15 +8,16 @@
           </div>
           <div class="justify-center items-center md:order-none flex flex-row order-first"></div>
           <div class="bg-white justify-center items-center md:m-0 md:flex flex flex-row hidden">
-            <a class="text-black text-center mr-6 font-bold text-lg" th:href="@{/login}">Войти</a>
-            <a class="text-black text-center font-bold text-lg" th:href="@{/register}">Регистрация</a>
+	          <a class="text-black text-center mr-6 font-bold text-lg" sec:authorize="!isAuthenticated()"
+	             th:href="@{/login}">Войти</a>
+	          <a class="text-black text-center font-bold text-lg" sec:authorize="!isAuthenticated()"
+	             th:href="@{/register}">Регистрация</a>
+	          <a class="text-black text-center font-bold text-lg" sec:authorize="isAuthenticated()"
+	             th:href="@{/logout}">Выход</a>
           </div>
           <div class="md:hidden ml-auto items-center flex">
             <div class="outline-none mobile-menu-button">
-              <svg class="w-6 h-6 text-gray-500 hover:text-green-500" fill="none" id="windframe"
-                   stroke="currentColor" stroke-linecap="round"
-                   stroke-width="2" viewbox="0 0 24 24"><path
-		              d="M4 6h16M4 12h16M4 18h16" id="windframe"/></svg>
+              <i class="w-6 h-6 text-gray-500 hover:text-green-500" data-feather="menu"></i>
             </div>
           </div>
         </div>
@@ -26,8 +27,10 @@
               <a class="text-gray-600 text-center mt-2 font-medium text-lg" th:href="@{/}">Главная</a>
               <a class="text-gray-600 text-center mt-2 font-medium text-lg" th:href="@{/app}">Медкарта</a>
               <a class="text-gray-600 text-center mt-2 font-medium text-lg" th:href="@{/app}">Записаться на приём</a>
-              <a class="text-gray-600 text-center mt-2 font-medium text-lg" th:href="@{/login}">Войти</a>
-              <a class="text-gray-600 text-center mt-2 font-medium text-lg" th:href="@{/register}">Регистрация</a>
+              <a class="text-gray-600 text-center mt-2 font-medium text-lg" sec:authorize="!isAuthenticated()"
+                 th:href="@{/login}">Войти</a>
+              <a class="text-gray-600 text-center mt-2 font-medium text-lg" sec:authorize="!isAuthenticated()"
+                 th:href="@{/register}">Регистрация</a>
             </div>
           </div>
         </div>

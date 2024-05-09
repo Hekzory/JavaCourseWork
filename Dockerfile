@@ -1,7 +1,7 @@
 FROM eclipse-temurin:21-alpine AS build
 
 COPY gradle gradle/
-COPY --chmod=765 gradlew build.gradle settings.gradle ./
+COPY --chmod=765 gradlew build.gradle.kts settings.gradle.kts ./
 COPY src/main ./src/main
 
 RUN --mount=type=cache,target=/root/.gradle ./gradlew --build-cache --parallel --no-daemon clean bootJar
