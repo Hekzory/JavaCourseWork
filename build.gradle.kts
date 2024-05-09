@@ -2,7 +2,8 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
     id("java")
-    id("org.springframework.boot") version "3.2.5"
+    id("pmd")
+    id("org.springframework.boot") version "3.3.0-RC1"
     id("io.spring.dependency-management") version "1.1.5"
 }
 
@@ -13,6 +14,14 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
+}
+
+pmd {
+    threads = 8
+    isConsoleOutput = true
+    ruleSets =
+        listOf("category/java/errorprone.xml", "category/java/bestpractices.xml", "category/java/performance.xml")
+    toolVersion = "7.0.0"
 }
 
 configurations {

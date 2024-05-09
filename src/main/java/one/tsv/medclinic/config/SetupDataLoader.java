@@ -1,7 +1,6 @@
 package one.tsv.medclinic.config;
 
 import one.tsv.medclinic.entity.Role;
-import one.tsv.medclinic.repository.UserRepository;
 import one.tsv.medclinic.repository.RoleRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -12,15 +11,12 @@ import java.util.Optional;
 
 @Component
 public class SetupDataLoader implements ApplicationListener<ContextRefreshedEvent> {
-    private final UserRepository appUserRepository;
     private final RoleRepository roleRepository;
+    boolean setupComplete;
 
-    public SetupDataLoader(UserRepository appUserRepository, RoleRepository roleRepository) {
-        this.appUserRepository = appUserRepository;
+    public SetupDataLoader(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
-
-    boolean setupComplete = false;
 
     @Override
     @Transactional
