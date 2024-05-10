@@ -1,0 +1,42 @@
+<!--/*@thymesVar id="medicalCard" type="one.tsv.medclinic.dto.MedicalCardDto"*/-->
+<form method="POST" th:action="@{/app/card}" th:object="${medicalCard}">
+	<div class="bg-white shadow-md rounded-xl">
+		<div class="text-md font-medium mx-auto p-4 text-center">Медицинская карта</div>
+		<div class="grid grid-cols-2 w-full">
+			<div class="p-4 w-full text-center border-y border-y-gray-100">
+				<label class="text-gray-600 text-md font-medium hover:text-blue-500 mx-2 truncate" for="height">Рост</label>
+			</div>
+			<div class="p-4 w-full text-center border-y border-y-gray-100">
+				<input class="peer py-2 px-1 text-sm font-normal text-gray-500 border-b border-blue-gray-200 bg-transparent outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-900 focus:outline-0"
+				       id="height" name="height" th:field="*{height}" type="number">
+			</div>
+			<div class="p-4 w-full text-center border-y border-y-gray-100">
+				<label class="text-gray-600 text-md font-medium hover:text-blue-500 mx-2 truncate" for="weight">Вес(кг)</label>
+			</div>
+			<div class="p-4 w-full text-center border-y border-y-gray-100">
+				<input class="peer py-2 px-1 text-sm font-normal text-gray-500 border-b border-blue-gray-200 bg-transparent outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-900 focus:outline-0"
+				       id="weight" name="weight" th:field="*{weight}" type="number">
+			</div>
+			<div class="p-4 w-full text-center border-y border-y-gray-100">
+				<label class="text-gray-600 text-md font-medium hover:text-blue-500 mx-2 truncate" for="bloodType">Группа крови</label>
+			</div>
+			<div class="p-4 w-full text-center border-y border-y-gray-100">
+				<input class="peer py-2 px-1 text-sm font-normal text-gray-500 border-b border-blue-gray-200 bg-transparent outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-900 focus:outline-0"
+				       id="bloodType" name="weight" th:field="*{bloodType}" type="text">
+			</div>
+			<div class="p-4 w-full text-center border-y border-y-gray-100">
+				<label class="text-gray-600 text-md font-medium hover:text-blue-500 mx-2 truncate" for="otherInfo">Другая информация</label>
+			</div>
+			<div class="p-4 w-full text-center border-y border-y-gray-100">
+				<input class="peer py-2 px-1 text-sm font-normal text-gray-500 border-b border-blue-gray-200 bg-transparent outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-900 focus:outline-0"
+				       id="otherInfo" name="weight" th:field="*{otherInfo}" type="text">
+			</div>
+			<div class="p-4 mx-auto border-b border-b-gray-100 col-span-2">
+				<button class="bg-gradient-to-br from-purple-600 to-blue-500 text-white font-medium hover:bg-gradient-to-bl focus:ring-1 focus:outline-none focus:ring-blue-300 px-5 py-2.5 rounded-lg inline-flex items-center justify-center"
+				        type="submit">
+					<i class="me-2" data-feather="save"></i> Сохранить
+				</button>
+			</div>
+		</div>
+	</div>
+</form>

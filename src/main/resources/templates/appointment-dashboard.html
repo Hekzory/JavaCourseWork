@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/defaultHeadContent}"></head>
+<body class="w-screen min-h-screen bg-gray-100">
+<div th:replace="~{fragments/defaultNavBar}"></div>
+<div th:replace="~{fragments/dashboard/headblock}"></div>
+<div class="grid max-md:grid-cols-1 lg:grid-cols-2 gap-9 px-4 py-4">
+	<div th:replace="~{fragments/dashboard/appointmentsCard}"></div>
+</div>
+<script th:replace="~{fragments/defaultBottomScript}"></script>
+</body>
+</html>

@@ -1,7 +1,6 @@
 package one.tsv.medclinic.config;
 
 import one.tsv.medclinic.service.AppUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -18,8 +17,11 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    AppUserDetailsService appUserDetailsService;
+    final AppUserDetailsService appUserDetailsService;
+
+    public SecurityConfig(AppUserDetailsService appUserDetailsService) {
+        this.appUserDetailsService = appUserDetailsService;
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

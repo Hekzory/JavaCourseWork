@@ -23,6 +23,10 @@ public class UserService {
         this.roleRepository = roleRepository;
     }
 
+    public User getByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
     public User registerNewUserAccount(final UserDto accountDto) throws EntityExistsException, BadCredentialsException {
         if (userRepository.findByEmail(accountDto.getEmail()) != null) {
             throw new EntityExistsException("There is an account with that email address: " + accountDto.getEmail());
