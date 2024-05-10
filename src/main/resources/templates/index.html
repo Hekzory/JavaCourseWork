@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{fragments/defaultHeadContent}"></head>
-<body class="w-screen h-screen">
-<div>
-	<div th:replace="~{fragments/defaultNavBar}"></div>
-	<div class="pt-20 pr-4 pb-20 pl-4">
-		<div class="bg-white pt-8 pr-4 pb-8 pl-4 md:px-24 lg:px-8 lg:py-10">
-			<div class="mr-auto ml-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-				<div class="mr-auto mb-10 ml-auto md:mx-auto text-center lg:max-w-2xl md:mb-8 flex flex-col max-w-xl">
-					<div class="mt-6 mr-auto mb-6 ml-auto text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl max-w-lg font-sans">
-						<div class="inline relative">
-							<p class="font-bold text-3xl tracking-tight sm:text-4xl sm:leading-none inline font-sans">Качественные медицинские услуги</p>
-						</div>
+<body class="w-screen min-h-screen bg-gray-100">
+<div th:replace="~{fragments/defaultNavBar}"></div>
+<div class="my-20 px-4">
+	<div class="bg-white shadow-md rounded-xl py-8 px-4 mx-auto md:px-24 lg:px-8 lg:py-10 w-full md:w-3/4 lg:w-2/4">
+		<div class="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+			<div class="mr-auto mb-10 ml-auto md:mx-auto text-center lg:max-w-2xl md:mb-8 flex flex-col max-w-xl">
+				<div class="mt-6 mr-auto mb-6 ml-auto text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl max-w-lg font-sans">
+					<div class="inline relative">
+						<p class="font-bold text-3xl tracking-tight sm:text-4xl sm:leading-none inline font-sans">Качественные медицинские услуги</p>
 					</div>
-					<p class="text-base text-center text-gray-700 md:text-lg">Запишитесь на приём прямо сейчас! Наши профессиональные доктора известны своим индивидуальным подходом.</p>
 				</div>
+				<p class="text-base text-center text-gray-700 md:text-lg">Запишитесь на приём прямо сейчас! Наши профессиональные доктора известны своим индивидуальным подходом.</p>
 			</div>
 		</div>
-		<div class="w-full mt-10 mr-auto mb-2 ml-auto text-center md:w-3/4 lg:w-2/4">
-			<p class="mb-2 text-base font-semibold text-blue-700">Требуется авторизация</p>
-			<p class="mt-0 mr-0 mb-6 ml-0 text-3xl font-extrabold">Войдите или создайте аккаунт, чтобы продолжить</p>
-			<div class="mt-- mr-- mb-0 ml-- md:space-x-2 space-x-0">
-				<div class="bg-blue-700 text-white font-bold pt-2 pr-4 pb-2 pl-4 items-center justify-center w-full mb-2 sm:w-auto sm:mb-0 rounded inline-flex hover:bg-blue-900">
-					<a th:href="@{/login}" class="inline-flex">Войти</a>
-				</div>
-				<div class="bg-gray-100 text-gray-800 font-bold pt-2 pr-4 pb-2 pl-4 items-center justify-center w-full mb-2 sm:w-auto sm:mb-0 rounded inline-flex hover:bg-gray-200">
-					<a th:href="@{/register}" class="inline-flex">Зарегистрироваться</p>
-				</div>
+	</div>
+	<div class="bg-white shadow-md rounded-xl w-full py-8 px-4 mt-10 mx-auto mb-2 text-center md:w-3/4 lg:w-2/4">
+		<p class="mb-2 text-base font-semibold text-blue-700">Требуется авторизация</p>
+		<p class="mt-0 mr-0 mb-6 ml-0 text-3xl font-extrabold">Войдите или создайте аккаунт, чтобы продолжить</p>
+		<div class="mt-- mr-- mb-0 ml-- md:space-x-2 space-x-0">
+			<div class="bg-blue-700 text-white font-bold pt-2 pr-4 pb-2 pl-4 items-center justify-center w-full mb-2 sm:w-auto sm:mb-0 rounded inline-flex hover:bg-blue-900">
+				<a class="inline-flex" th:href="@{/login}">Войти</a>
+			</div>
+			<div class="bg-gray-100 text-gray-800 font-bold pt-2 pr-4 pb-2 pl-4 items-center justify-center w-full mb-2 sm:w-auto sm:mb-0 rounded inline-flex hover:bg-gray-200">
+				<a class="inline-flex" th:href="@{/register}">Зарегистрироваться</a>
 			</div>
 		</div>
 	</div>
