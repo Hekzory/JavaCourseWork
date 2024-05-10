@@ -18,11 +18,6 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/app")
-    public String app() {
-        return "main-dashboard";
-    }
-
     @GetMapping("/admin")
     public String admin() {
         return "index";

@@ -40,6 +40,7 @@ configurations {
 
 repositories {
     mavenCentral()
+    google()
     maven { url = uri("https://repo.spring.io/milestone") }
 }
 

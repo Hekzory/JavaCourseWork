@@ -1,11 +1,9 @@
 package one.tsv.medclinic.controllers;
 
 import jakarta.persistence.EntityExistsException;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import one.tsv.medclinic.dto.UserDto;
 import one.tsv.medclinic.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
@@ -17,8 +15,11 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class AuthController {
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public AuthController(UserService userService) {
+        this.userService = userService;
+    }
 
 
     @GetMapping("/login")
@@ -40,7 +41,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public RedirectView registerUserAccount(@Valid final UserDto accountDto, final HttpServletRequest request) {
+    public RedirectView registerUserAccount(@Valid final UserDto accountDto) {
         try {
             userService.registerNewUserAccount(accountDto);
         } catch (BadCredentialsException | EntityExistsException e) {
