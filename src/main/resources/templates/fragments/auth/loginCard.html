@@ -3,12 +3,9 @@
 		<h1 class="text-3xl font-bold text-[#4B5563] text-[#4B5563] my-auto">MediHub Access</h1>
 	</div>
 	<div class="text-base font-medium text-[#6B7280] pb-8 mx-auto">Выполните вход для продолжения</div>
-	<div class="text-base font-medium text-[#6B7280] pb-8 mx-auto"
-	     th:if="${param.error}">Некорректный логин и пароль.</div>
-	<div class="text-base font-medium text-[#6B7280] pb-8 mx-auto"
-	     th:if="${param.register}">Успешная регистрация! Теперь необходимо войти.</div>
-	<div class="text-base font-medium text-[#6B7280] pb-8 mx-auto"
-	     th:if="${param.logout}">Вы вышли из аккаунта.</div>
+	<div class="text-base font-medium text-[#6B7280] pb-8 mx-auto" th:if="${param.error}">Некорректный логин и пароль.</div>
+	<div class="text-base font-medium text-[#6B7280] pb-8 mx-auto" th:if="${param.register}">Успешная регистрация! Теперь необходимо войти.</div>
+	<div class="text-base font-medium text-[#6B7280] pb-8 mx-auto" th:if="${param.logout}">Вы вышли из аккаунта.</div>
 	<form class="flex flex-col" method="post" th:action="@{/login}">
 		<div class="pb-2">
 			<label class="block mb-2 text-base font-medium text-[#111827]" for="username">Имя пользователя</label>
@@ -16,9 +13,7 @@
 				<div class="absolute inset-y-0 left-0 flex items-center p-1 pl-3"><i data-feather="user"></i></div>
 				<input autocomplete="off"
 				       class="pl-12 mb-2 bg-gray-50 text-gray-600 border focus:border-transparent border-gray-300 sm:text-sm rounded-lg ring ring-transparent focus:ring-1 focus:outline-none focus:ring-gray-400 block w-full p-2.5 rounded-l-lg py-3 px-4"
-				       id="username"
-				       name="username"
-				       placeholder="username" type="text">
+				       id="username" name="username" placeholder="username" type="text">
 			</div>
 		</div>
 		<div class="pb-6">
@@ -27,9 +22,7 @@
 				<div class="absolute inset-y-0 left-0 flex items-center p-1 pl-3"><i data-feather="lock"></i></div>
 				<input autocomplete="new-password"
 				       class="pl-12 mb-2 bg-gray-50 text-gray-600 border focus:border-transparent border-gray-300 sm:text-sm rounded-lg ring ring-transparent focus:ring-1 focus:outline-none focus:ring-gray-400 block w-full p-2.5 rounded-l-lg py-3 px-4"
-				       id="password" name="password"
-				       placeholder="••••••••••"
-				       type="password">
+				       id="password" name="password" placeholder="••••••••••" type="password">
 			</div>
 		</div>
 		<button class="w-full text-[#FFFFFF] bg-[#261bff] focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-6"
