@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -23,6 +24,11 @@ public class AppointmentWindow {
     @ManyToOne()
     @JoinColumn(name = "doctor_id", referencedColumnName = "id")
     private Doctor doctor;
+
+    @Temporal(TemporalType.DATE)
+    private Date date;
+
+    private Long queueLength;
 
     @OneToMany(mappedBy = "appointmentWindow")
     private List<Appointment> appointmentList;
