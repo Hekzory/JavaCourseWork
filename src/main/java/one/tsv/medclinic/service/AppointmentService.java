@@ -7,6 +7,7 @@ import one.tsv.medclinic.repository.AppointmentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,7 +16,7 @@ import java.util.Optional;
 public class AppointmentService {
     private final AppointmentRepository appointmentRepository;
 
-    public ArrayList<Appointment> getAppointmentListByUserId(Long userId) {
+    public List<Appointment> getAppointmentListByUserId(Long userId) {
         return appointmentRepository.findByUserId(userId);
     }
 
