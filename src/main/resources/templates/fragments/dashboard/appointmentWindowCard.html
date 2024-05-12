@@ -1,0 +1,137 @@
+<div class="bg-white shadow-md rounded-xl">
+	<div class="text-md font-medium mx-auto p-4 text-center">Окна на запись</div>
+	<div class="grid grid-cols-2 md:grid-cols-4 w-full">
+		<div class="col-span-2 md:col-span-4 grid grid-cols-2 md:grid-cols-4" id="appointmentWindowsContainer"></div>
+		<div class="col-span-2 md:col-span-4">
+			<select class="mx-auto my-3 block w-2/3 p-2.5 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+			        id="specialistFilter">
+				<option value="">Выберите специалиста</option>
+			</select>
+		</div>
+		<div class="col-span-2 md:col-span-4">
+			<select class="mx-auto my-3 block w-2/3 p-2.5 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+			        id="dateFilter">
+				<option value="">Выберите дату</option>
+			</select>
+		</div>
+	</div>
+</div>
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	var appointmentWindows = /*[[${appointmentWindows}]]*/ [];
+	/*]]>*/
+</script>
+<script th:inline="javascript">
+	document.addEventListener('DOMContentLoaded', function () {
+		var appointmentWindowsContainer = document.getElementById('appointmentWindowsContainer');
+		var specialistFilter = document.getElementById('specialistFilter');
+		var dateFilter = document.getElementById('dateFilter');
+
+		function updateDisplay() {
+			var currentSpecialist = specialistFilter.value;
+			var currentDate = dateFilter.value;
+
+			specialistFilter.innerHTML = '<option value="">Выберите специалиста</option>';
+			dateFilter.innerHTML = '<option value="">Выберите дату</option>';
+
+			var specialists = [...new Set(appointmentWindows.map(window => window.doctorSpecialty))];
+			var dates = [...new Set(appointmentWindows.map(window => window.date))];
+
+			specialists.forEach(specialist => {
+				var option = document.createElement('option');
+				option.value = specialist;
+				option.textContent = specialist;
+				specialistFilter.appendChild(option);
+			});
+
+			dates.forEach(date => {
+				var option = document.createElement('option');
+				option.value = date;
+				option.textContent = date;
+				dateFilter.appendChild(option);
+			});
+
+			specialistFilter.value = currentSpecialist;
+			dateFilter.value = currentDate;
+
+			var filteredWindows = appointmentWindows.filter(window =>
+					(!specialistFilter.value || window.doctorSpecialty === specialistFilter.value) &&
+					(!dateFilter.value || window.date === dateFilter.value)
+			);
+
+			appointmentWindowsContainer.innerHTML = '';
+			filteredWindows.forEach(window => {
+				var rowFirst = document.createElement('div');
+				rowFirst.classList.value = "p-4 w-full text-center border-y border-y-gray-100 text-sm font-normal text-gray-500";
+				rowFirst.textContent = `Специалист: ${window.doctorSpecialty}`;
+				var rowSecond = document.createElement('div');
+				rowSecond.classList.value = "p-4 w-full text-center border-y border-y-gray-100 text-sm font-normal text-gray-500";
+				rowSecond.textContent = `Дата: ${window.date}`;
+				var rowThird = document.createElement('div');
+				rowThird.classList.value = "p-4 w-full text-center border-y border-y-gray-100 text-sm font-normal text-gray-500";
+				rowThird.textContent = `Мест: ${window.queueLength}`;
+				var rowFourth = document.createElement('div');
+				rowFourth.classList.value = "p-4 w-full text-center border-y border-y-gray-100 text-sm font-normal text-gray-500";
+				rowFourth.innerHTML = `<div class="w-10 mx-auto">
+				<button class="text-gray-500 text-sm w-6 h-6 rounded-md apply-button" data-window-id="${window.id}" type="button">
+				<i data-feather="plus"></i>
+				</button></div>`;
+				appointmentWindowsContainer.appendChild(rowFirst);
+				appointmentWindowsContainer.appendChild(rowSecond);
+				appointmentWindowsContainer.appendChild(rowThird);
+				appointmentWindowsContainer.appendChild(rowFourth);
+				feather.replace();
+				updateButtonEvents();
+			});
+
+			if (filteredWindows.length === 0) {
+				var rowFirst = document.createElement('div');
+				rowFirst.classList.value = "col-span-2 md:col-span-4 p-4 w-full text-center border-y border-y-gray-100 text-sm font-normal text-gray-500";
+				rowFirst.textContent = `Доступные записи с данным запросом отсутствуют.`;
+				appointmentWindowsContainer.appendChild(rowFirst);
+			}
+		}
+
+		updateDisplay();
+		specialistFilter.addEventListener('change', updateDisplay);
+		dateFilter.addEventListener('change', updateDisplay);
+	});
+
+	function updateButtonEvents() {
+		document.querySelectorAll('.apply-button').forEach(button => {
+			button.replaceWith(button.cloneNode(true));
+		});
+		document.querySelectorAll('.apply-button').forEach(button => {
+			button.addEventListener('click', function (event) {
+				event.preventDefault();
+
+				const windowId = this.getAttribute('data-window-id');
+
+				applyAppointment(windowId);
+			});
+		});
+	}
+
+	function applyAppointment(windowId) {
+		console.log("Apply: ", windowId);
+		fetch('/app/appointment', {
+			method: 'POST',
+			/*<![CDATA[*/
+			headers: {
+				'Content-Type': 'application/json',
+				'X-CSRF-TOKEN': /*[[${_csrf.token}]]*/ ''
+			},
+			body: JSON.stringify({"id": windowId})
+			/*]]>*/
+		})
+				.then(response => response.json())
+				.then(data => {
+					if (data.success) {
+						location.reload();
+					} else {
+						console.error('Failed to apply: ', data);
+					}
+				})
+				.catch(error => console.error('Error:', error));
+	}
+</script>
