@@ -10,6 +10,7 @@ import one.tsv.medclinic.repository.AppointmentWindowRepository;
 import one.tsv.medclinic.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,10 @@ public class AppointmentService {
 
     public List<Appointment> getAppointmentListByUserId(Long userId) {
         return appointmentRepository.findByUserId(userId);
+    }
+
+    public List<Appointment> getAppointmentListByUserIdAndDateAfter(Long userId, Date date) {
+        return appointmentRepository.findByUserIdAndAppointmentWindow_DateAfter(userId, date);
     }
 
     public boolean deleteAppointment(Long userId, Long appointmentId) {

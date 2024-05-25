@@ -76,7 +76,7 @@ public class DashboardController {
     @GetMapping("/app/appointment")
     public ModelAndView appointment(@AuthenticationPrincipal UserDetails userDetails) {
         User currentUser = userService.getByUsername(userDetails.getUsername());
-        List<Appointment> appointments = appointmentService.getAppointmentListByUserId(currentUser.getId());
+        List<Appointment> appointments = appointmentService.getAppointmentListByUserIdAndDateAfter(currentUser.getId(), new Date());
         List<AppointmentWindow> appointmentWindowList = appointmentWindowService.findByDateAfter(new Date());
         List<AppointmentWindowDto> appointmentWindows = appointmentWindowList.stream().map(AppointmentWindowDto::fromEntity)
                 .toList();

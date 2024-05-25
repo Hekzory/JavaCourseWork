@@ -2,15 +2,16 @@
 	<nav class="w-full">
 		<div class="w-full justify-between md:flex-row mt-auto mr-auto mb-auto ml-auto flex max-w-screen-2xl">
 			<div class="bg-white justify-between items-center mt-2 mb-2 md:m-0 md:flex flex flex-row hidden">
-				<a class="text-black text-center mr-6 font-bold text-base" th:href="@{/}">Главная</a>
-				<a class="text-black text-center mr-6 font-bold text-base" th:href="@{/app/card}">Медкарта</a>
-				<a class="text-black text-center font-bold text-base" th:href="@{/app/appointment}">Записаться на приём</a>
+				<a class="text-black text-center mx-3 font-bold text-base" th:href="@{/}">Главная</a>
+				<a class="text-black text-center mx-3 font-bold text-base" th:href="@{/app/card}">Медкарта</a>
+				<a class="text-black text-center mx-3 font-bold text-base" th:href="@{/app/appointment}">Записаться на приём</a>
+				<a class="text-black text-center mx-3 font-bold text-base" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">Admin</a>
 			</div>
 			<div class="justify-center items-center md:order-none flex flex-row order-first"></div>
 			<div class="bg-white justify-center items-center md:m-0 md:flex flex flex-row hidden">
-				<a class="text-black text-center mr-6 font-bold text-lg" sec:authorize="!isAuthenticated()" th:href="@{/login}">Войти</a>
-				<a class="text-black text-center font-bold text-lg" sec:authorize="!isAuthenticated()" th:href="@{/register}">Регистрация</a>
-				<a class="text-black text-center font-bold text-lg" sec:authorize="isAuthenticated()" th:href="@{/logout}">Выход</a>
+				<a class="text-black text-center mx-3 font-bold text-lg" sec:authorize="!isAuthenticated()" th:href="@{/login}">Войти</a>
+				<a class="text-black text-center mx-3 font-bold text-lg" sec:authorize="!isAuthenticated()" th:href="@{/register}">Регистрация</a>
+				<a class="text-black text-center mx-3 font-bold text-lg" sec:authorize="isAuthenticated()" th:href="@{/logout}">Выход</a>
 			</div>
 			<div class="md:hidden ml-auto items-center flex">
 				<div class="outline-none mobile-menu-button">
@@ -24,6 +25,7 @@
 					<a class="text-gray-600 text-center mt-2 font-medium text-lg" th:href="@{/}">Главная</a>
 					<a class="text-gray-600 text-center mt-2 font-medium text-lg" th:href="@{/app/card}">Медкарта</a>
 					<a class="text-gray-600 text-center mt-2 font-medium text-lg" th:href="@{/app/appointment}">Записаться на приём</a>
+					<a class="text-gray-600 text-center mt-2 font-medium text-lg" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">Admin</a>
 					<a class="text-gray-600 text-center mt-2 font-medium text-lg" sec:authorize="!isAuthenticated()" th:href="@{/login}">Войти</a>
 					<a class="text-gray-600 text-center mt-2 font-medium text-lg" sec:authorize="!isAuthenticated()" th:href="@{/register}">Регистрация</a>
 					<a class="text-gray-600 text-center mt-2 font-medium text-lg" sec:authorize="isAuthenticated()" th:href="@{/logout}">Выход</a>
